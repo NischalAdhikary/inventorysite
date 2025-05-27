@@ -1,0 +1,375 @@
+"use client";
+import React from "react";
+import { ChevronDown, ChevronRight, Menu, Download } from "lucide-react";
+import Image from "next/image";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
+
+const featuresData = {
+  tracking: {
+    title: "Real-Time Tracking",
+    icon: "⏱️",
+    color: "text-orange-600",
+    items: [
+      "Live inventory updates",
+      "Audit trail for inventory changes",
+    ],
+  },
+  scanning: {
+    title: "Barcode & QR Scanning",
+    icon: "📷",
+    color: "text-green-600",
+    items: [
+      "Mobile barcode scanning",
+      "QR code-based item lookup",
+      "Cycle counting automation",
+    ],
+  },
+  analytics: {
+    title: "Advanced Analytics",
+    icon: "📈",
+    color: "text-blue-600",
+    items: [
+      "Inventory turnover reports",
+      "Historical data insights",
+      "Custom reporting",
+    ],
+  },
+  order: {
+    title: "Order Management",
+    icon: "📦",
+    color: "text-red-600",
+    items: [
+      "Manage purchase orders",
+      "Order fulfillment tracking",
+      "Order lifecycle monitoring",
+    ],
+  },
+  alerts: {
+    title: "Low Stock Alerts",
+    icon: "🚨",
+    color: "text-yellow-600",
+    items: [
+      "Smart notification system",
+      "Critical item monitoring",
+      "Threshold configuration",
+    ],
+  },
+  multiLocation: {
+    title: "Multi-Location Support",
+    icon: "🌐",
+    color: "text-purple-600",
+    items: [
+      "Centralized inventory control",
+      "Inter-location stock transfers",
+      "Location-based reporting",
+    ],
+  },
+};
+
+// ssa
+const solutionsData = [
+  {
+    title: "Restaurant Management",
+    description: "Complete solution for restaurants and cafes",
+    icon: "🍽️",
+    href: "/solutions/restaurant",
+  },
+  {
+    title: "Retail Inventory",
+    description: "Perfect for retail stores and shops",
+    icon: "🏪",
+    href: "/solutions/retail",
+  },
+  {
+    title: "Warehouse Management",
+    description: "Large-scale warehouse operations",
+    icon: "🏭",
+    href: "/solutions/warehouse",
+  },
+  {
+    title: "E-commerce Integration",
+    description: "Sync with your online store",
+    icon: "🛒",
+    href: "/solutions/ecommerce",
+  },
+  {
+    title: "Manufacturing",
+    description: "Production and assembly management",
+    icon: "⚙️",
+    href: "/solutions/manufacturing",
+  },
+  {
+    title: "Distribution",
+    description: "Multi-location distribution networks",
+    icon: "🚚",
+    href: "/solutions/distribution",
+  },
+];
+
+const AppDrawer = () => {
+  const [featuresOpen, setFeaturesOpen] = React.useState(false);
+  const [solutionsOpen, setSolutionsOpen] = React.useState(false);
+  const [integrationsOpen, setIntegrationsOpen] = React.useState(false);
+  const [resourcesOpen, setResourcesOpen] = React.useState(false);
+
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="sm" className="md:hidden p-2">
+          <Menu className="h-6 w-6 text-gray-700" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-[340px] overflow-y-auto">
+        <SheetHeader className="border-b pb-4">
+          <SheetTitle className="flex items-center gap-2 text-left">
+            <div className="w-10 h-10 relative">
+              <Image
+                src="/inventorylogo.png"
+                alt="Inventory Eats Logo"
+                fill
+                className="absolute object-contain"
+              />
+            </div>
+            <span className="text-xl font-bold text-orange-500">
+              Inventory Eats
+            </span>
+          </SheetTitle>
+        </SheetHeader>
+
+        <div className="mt-6 space-y-2">
+          {/* Features Collapsible */}
+          <Collapsible open={featuresOpen} onOpenChange={setFeaturesOpen}>
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-3 text-left hover:bg-gray-100 rounded-md">
+              <span className="font-medium text-orange-600">Features</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  featuresOpen ? "rotate-180" : ""
+                }`}
+              />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="space-y-3 mt-2 ml-2">
+              {Object.values(featuresData).map((category, index) => (
+                <div key={index} className="border-l-2 border-gray-100 pl-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">{category.icon}</span>
+                    <h4 className={`font-semibold text-sm ${category.color}`}>
+                      {category.title}
+                    </h4>
+                  </div>
+                  <div className="space-y-1">
+                    {category.items.map((item, itemIndex) => (
+                      <a
+                        key={itemIndex}
+                        href="#"
+                        className="block text-xs text-gray-600 hover:text-orange-600 py-1 px-2 hover:bg-gray-50 rounded"
+                      >
+                        {item}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </CollapsibleContent>
+          </Collapsible>
+
+          <Collapsible open={solutionsOpen} onOpenChange={setSolutionsOpen}>
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-3 text-left hover:bg-gray-100 rounded-md">
+              <span className="font-medium">Solutions</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  solutionsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="space-y-2 mt-2 ml-2">
+              {solutionsData.map((solution, index) => (
+                <a
+                  key={index}
+                  href={solution.href}
+                  className="flex items-start gap-3 p-2 hover:bg-gray-50 rounded-md"
+                >
+                  <span className="text-base">{solution.icon}</span>
+                  <div>
+                    <h4 className="font-medium text-sm">{solution.title}</h4>
+                    <p className="text-xs text-gray-600">
+                      {solution.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </CollapsibleContent>
+          </Collapsible>
+
+          <a
+            href="/pricing"
+            className="flex items-center p-3 text-sm font-medium hover:bg-gray-100 rounded-md"
+          >
+            <span className="text-lg mr-3">💰</span>
+            Pricing
+          </a>
+
+          <a
+            href="/customers"
+            className="flex items-center p-3 text-sm font-medium hover:bg-gray-100 rounded-md"
+          >
+            <span className="text-lg mr-3">👥</span>
+            Customers
+          </a>
+
+          <div className="space-y-2 pt-4 border-t">
+            <a
+              href="/login"
+              className="flex items-center p-3 text-sm font-medium hover:bg-gray-100 rounded-md"
+            >
+              Login
+            </a>
+
+            <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium">
+              Start Free Trail
+            </Button>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+};
+
+const InventoryNavbar = () => {
+  return (
+    <div className="w-full">
+      <div className="bg-gray-800 text-white text-center py-2 px-4 flex justify-center items-center gap-2">
+        <span className="text-sm">Launching Sale: Book your demo Today</span>
+        <ChevronRight className="h-3 w-3" />
+      </div>
+
+      <nav className="bg-white border-b border-gray-200 px-6 py-4 shadow relative z-50">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <AppDrawer />
+            <div className="flex items-center gap-2">
+              <div className="w-16 h-14 relative">
+                <Image
+                  src="/inventorylogo.png"
+                  alt="company_logo"
+                  fill
+                  className="absolute object-contain"
+                />
+              </div>
+              <span className="text-2xl font-bold text-orange-500">
+                Inventory Eats
+              </span>
+            </div>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-8">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-7">
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="px-0 text-sm font-medium text-gray-700 hover:text-orange-600">
+                    Features
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="bg-white">
+                    <NavigationMenuLink className="block w-[700px] p-8">
+                      <div className="flex justify-between">
+                        <div className="grid grid-cols-3 gap-8 flex-1">
+                          {Object.values(featuresData).map(
+                            (category, index) => (
+                              <div key={index} className="space-y-3">
+                                <div className="flex items-center gap-2 border-b pb-2">
+                                  <span className="text-xl">
+                                    {category.icon}
+                                  </span>
+                                  <h3
+                                    className={`font-semibold text-sm ${category.color}`}
+                                  >
+                                    {category.title}
+                                  </h3>
+                                </div>
+                                <div className="space-y-2">
+                                  {category.items.map((item, itemIndex) => (
+                                    <a
+                                      key={itemIndex}
+                                      href="#"
+                                      className="block text-xs text-gray-600 hover:text-orange-600 py-1 hover:bg-gray-50 rounded px-2 transition-colors"
+                                    >
+                                      {item}
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      </div>
+                    </NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            <a
+              href="/entrprise"
+              className=" text-sm font-medium text-gray-700 hover:text-orange-600"
+            >
+              Entrprise
+            </a>
+            <a
+              href="/customers"
+              className=" text-sm font-medium text-gray-700 hover:text-orange-600"
+            >
+              Customers
+            </a>
+
+            <a
+              href="/pricing"
+              className=" text-sm font-medium text-gray-700 hover:text-orange-600"
+            >
+              Pricing
+            </a>
+          </div>
+
+          {/* Right Side Actions */}
+          <div className="flex items-center space-x-4">
+            <a
+              href="/search"
+              className="hidden md:flex items-center text-gray-500 hover:text-gray-700"
+            ></a>
+
+            <a
+              href="/login"
+              className="hidden md:block text-sm font-medium text-orange-600"
+            >
+              Login
+            </a>
+
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white cursor-pointer  text-white px-4 py-2 text-sm font-medium">
+              Start Free Trail
+            </Button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default InventoryNavbar;
