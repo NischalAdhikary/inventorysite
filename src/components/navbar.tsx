@@ -145,7 +145,7 @@ const AppDrawer = () => {
           <SheetTitle className="flex items-center gap-2 text-left">
             <div className="w-10 h-10 relative">
               <Image
-                src="/logo.png"
+                src="/inventorylogo.png"
                 alt="Inventory Eats Logo"
                 fill
                 className="absolute object-contain"
@@ -270,7 +270,7 @@ const InventoryNavbar = () => {
             <div className="flex items-center gap-2">
               <div className="w-16 h-14 relative">
                 <Image
-                  src="/logo.png"
+                  src="/inventorylogo.png"
                   alt="company_logo"
                   fill
                   className="absolute object-contain"
