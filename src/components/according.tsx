@@ -45,7 +45,6 @@ export default function According() {
   return (
     <div className="min-h-screen bg-gray-50 py-14 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header Section - Matching Testimonials style */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center bg-orange-500/10 rounded-full px-6 py-2 mb-6">
             <HelpCircle className="w-5 h-5 text-orange-600 mr-2" />
@@ -63,7 +62,6 @@ export default function According() {
           </p>
         </div>
 
-        {/* FAQ Accordion */}
         <div className="w-full mx-auto space-y-6 ">
           {faqs.map((faq, index) => (
             <div

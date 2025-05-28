@@ -146,8 +146,6 @@ const data = [
   },
 ];
 
-// ...existing imports...
-
 export default function Features() {
   const router = useRouter();
   const handleFeatureClick = (label: string) => {
@@ -162,7 +160,6 @@ export default function Features() {
   return (
     <div className="min-h-screen bg-gray-50 py-14 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header Section - Matching other components style */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center bg-orange-500/10 rounded-full px-6 py-2 mb-6">
             <Settings className="w-5 h-5 text-orange-600 mr-2" />
@@ -236,7 +233,6 @@ export default function Features() {
           ))}
         </div>
 
-        {/* Call to Action */}
         <div className="mt-20 text-center">
           <button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors mr-4">
             Get Started Now
