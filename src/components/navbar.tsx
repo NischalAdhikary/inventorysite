@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { ChevronDown, ChevronRight, Menu, Download } from "lucide-react";
 import Image from "next/image";
 import {
@@ -26,63 +27,64 @@ import {
 import { Button } from "@/components/ui/button";
 
 const featuresData = {
-  tracking: {
-    title: "Real-Time Tracking",
-    icon: "⏱️",
-    color: "text-orange-600",
-    items: [
-      "Live inventory updates",
-      "Audit trail for inventory changes",
-    ],
-  },
-  scanning: {
-    title: "Barcode & QR Scanning",
-    icon: "📷",
+  incomeExpense: {
+    title: "Income & Expense Tracking",
+    icon: "💰",
     color: "text-green-600",
     items: [
-      "Mobile barcode scanning",
-      "QR code-based item lookup",
-      "Cycle counting automation",
+      "Record income and expenses",
+      "Categorize financial transactions",
+      "View financial summaries",
     ],
   },
-  analytics: {
-    title: "Advanced Analytics",
-    icon: "📈",
+  stockManagement: {
+    title: "Stock Management",
+    icon: "📦",
     color: "text-blue-600",
     items: [
-      "Inventory turnover reports",
-      "Historical data insights",
-      "Custom reporting",
+      "Add and update stock",
+      "Track stock availability",
+      "Low stock alerts",
     ],
   },
-  order: {
-    title: "Order Management",
-    icon: "📦",
-    color: "text-red-600",
-    items: [
-      "Manage purchase orders",
-      "Order fulfillment tracking",
-      "Order lifecycle monitoring",
-    ],
-  },
-  alerts: {
-    title: "Low Stock Alerts",
-    icon: "🚨",
-    color: "text-yellow-600",
-    items: [
-      "Smart notification system",
-      "Critical item monitoring",
-      "Threshold configuration",
-    ],
-  },
-  multiLocation: {
-    title: "Multi-Location Support",
-    icon: "🌐",
+  employeeRecords: {
+    title: "Employee Management",
+    icon: "👷",
     color: "text-purple-600",
     items: [
-      "Centralized inventory control",
-      "Inter-location stock transfers",
-      "Location-based reporting",
+      "Maintain employee records",
+      "Assign roles and permissions",
+      "Track attendance or tasks",
+    ],
+  },
+  orderCreation: {
+    title: "Order Processing",
+    icon: "📝",
+    color: "text-orange-600",
+    items: [
+      "Create and manage orders",
+      "Track order status",
+      "Generate invoices",
+    ],
+  },
+  billing: {
+    title: "Billing & Invoicing",
+    icon: "🧾",
+    color: "text-red-600",
+    items: [
+      "Generate bills and receipts",
+      "Apply taxes and discounts",
+      "Download or print invoices",
+    ],
+  },
+  customization: {
+    title: "Custom Features",
+    icon: "⚙️",
+    color: "text-gray-600",
+    items: [
+      "Adaptable to client needs",
+      "Feature toggle support",
+      "Scalable architecture",
     ],
   },
 };
@@ -287,7 +289,7 @@ const InventoryNavbar = () => {
               <NavigationMenuList className="space-x-7">
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="px-0 text-sm font-medium text-gray-700 hover:text-orange-600">
-                    Features
+                    <Link href="/features">Features</Link>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white">
                     <NavigationMenuLink className="block w-[700px] p-8">

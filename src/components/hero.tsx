@@ -6,10 +6,8 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <div className="w-full">
-      {/* Hero Section */}
       <div className="bg-gray-50  flex flex-col justify-center items-center py-20">
         <div className="max-w-6xl mx-auto text-center mb-16">
-          {/* Main Heading */}
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
             <span className="text-orange-500">Simple</span>{" "}
             <span className="text-gray-800">Inventory</span>
@@ -17,7 +15,6 @@ export default function Hero() {
             <span className="text-gray-800">Management Software.</span>
           </h1>
 
-          {/* Description */}
           <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             The best inventory software for small businesses to manage their
             physical inventory, including supplies, materials, tools, and
@@ -48,7 +45,6 @@ export default function Hero() {
             />
           </div>
         </div>
-      
       </div>
     </div>
   );
