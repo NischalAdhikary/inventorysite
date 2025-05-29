@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import {
   CheckCheck,
   ArrowRight,
@@ -25,8 +25,25 @@ import {
   Layers,
   ClipboardCheck,
 } from "lucide-react";
+type FeatureItem = {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+};
 
-const featuresData = {
+type Feature = {
+  label: string;
+  image: string;
+  description: string;
+  detailedDescription: string;
+  list: FeatureItem[];
+  additionalFeatures: string[];
+};
+
+type FeaturesData = {
+  [key: string]: Feature;
+};
+const featuresData: FeaturesData = {
   incomeExpense: {
     label: "Income & Expense Tracking",
     image: "/financial-dashboard.png",
@@ -257,7 +274,6 @@ const FeaturePage = ({ featureKey = "incomeExpense" }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
@@ -287,7 +303,6 @@ const FeaturePage = ({ featureKey = "incomeExpense" }) => {
         </div>
       </section>
 
-      {/* Main Features */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
@@ -319,7 +334,6 @@ const FeaturePage = ({ featureKey = "incomeExpense" }) => {
         </div>
       </section>
 
-      {/* Additional Features */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
@@ -341,7 +355,6 @@ const FeaturePage = ({ featureKey = "incomeExpense" }) => {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-gradient-to-r from-orange-600 to-orange-700 rounded-2xl p-8 md:p-12 text-white text-center">

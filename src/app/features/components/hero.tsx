@@ -1,5 +1,5 @@
 import React from "react";
-import InventoryNavbar from "./navbar";
+
 import { ChevronRight, MoveRight } from "lucide-react";
 import Image from "next/image";
 

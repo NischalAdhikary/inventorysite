@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import {
   Package,
   BarChart3,
@@ -18,11 +17,12 @@ import {
   MapPin,
   AlertTriangle,
   CheckCircle,
-  Receipt,
-  FilePlus,
-  Upload,
   DollarSign,
+  Upload,
+  FilePlus,
+  Receipt,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function FeaturesSection() {
   const router = useRouter();
@@ -129,8 +129,8 @@ export default function FeaturesSection() {
 
             return (
               <div
-                onClick={() => handleFeatureClick(feature.title)}
                 key={index}
+                onClick={() => handleFeatureClick(feature.title)}
                 className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div

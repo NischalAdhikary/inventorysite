@@ -5,8 +5,23 @@ import FeaturePage from "./components/Featurepage";
 
 import InventoryNavbar from "@/components/navbar";
 import Footer from "@/components/footer";
+type FeatureSlug =
+  | "income-expense-tracking"
+  | "stock-management"
+  | "employee-management"
+  | "order-processing"
+  | "billing-invoicing"
+  | "custom-features";
 
-const featureMapping = {
+type FeatureKey =
+  | "incomeExpense"
+  | "stockManagement"
+  | "employeeManagement"
+  | "orderProcessing"
+  | "billing"
+  | "customization";
+
+const featureMapping: Record<FeatureSlug, FeatureKey> = {
   "income-expense-tracking": "incomeExpense",
   "stock-management": "stockManagement",
   "employee-management": "employeeManagement",
@@ -17,7 +32,7 @@ const featureMapping = {
 
 export default function FeatureDetailPage() {
   const params = useParams();
-  const slug = params.slug;
+  const slug = params?.slug as FeatureSlug;
 
   const featureKey = featureMapping[slug];
 

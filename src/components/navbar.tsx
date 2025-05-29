@@ -1,8 +1,18 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ChevronDown, ChevronRight, Menu, Download } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Menu,
+  Download,
+  DollarSign,
+  Package,
+  Users,
+  FileText,
+  Receipt,
+  Settings,
+} from "lucide-react";
 import Image from "next/image";
 import {
   NavigationMenu,
@@ -26,76 +36,41 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
-import { desc } from "framer-motion/client";
+import { desc, div } from "framer-motion/client";
+import { useRouter } from "next/navigation";
 
-const featuresData = {
-  incomeExpense: {
+const featuresData = [
+  {
     title: "Income & Expense Tracking",
-    icon: "💰",
+    icon: DollarSign,
     color: "text-green-600",
-    items: [
-      "Record income and expenses",
-      "Categorize financial transactions",
-      "View financial summaries",
-    ],
-    description: "Easily track and categorize income and expenses.",
   },
-  stockManagement: {
+  {
     title: "Stock Management",
-    icon: "📦",
+    icon: Package,
     color: "text-blue-600",
-    items: [
-      "Add and update stock",
-      "Track stock availability",
-      "Low stock alerts",
-    ],
-    description: "Monitor stock levels and get low stock alerts.",
   },
-  employeeRecords: {
+  {
     title: "Employee Management",
-    icon: "👷",
+    icon: Users,
     color: "text-purple-600",
-    items: [
-      "Maintain employee records",
-      "Assign roles and permissions",
-      "Track attendance or tasks",
-    ],
-    description: "Manage employees, roles, and track their tasks.",
   },
-  orderCreation: {
+  {
     title: "Order Processing",
-    icon: "📝",
+    icon: FileText,
     color: "text-orange-600",
-    items: [
-      "Create and manage orders",
-      "Track order status",
-      "Generate invoices",
-    ],
-    description: "Create and manage dine-in or delivery orders.",
   },
-  billing: {
+  {
     title: "Billing & Invoicing",
-    icon: "🧾",
+    icon: Receipt,
     color: "text-red-600",
-    items: [
-      "Generate bills and receipts",
-      "Apply taxes and discounts",
-      "Download or print invoices",
-    ],
-    description: "Generate invoices with tax, discounts, and payments.",
   },
-  customization: {
+  {
     title: "Custom Features",
-    icon: "⚙️",
+    icon: Settings,
     color: "text-gray-600",
-    items: [
-      "Adaptable to client needs",
-      "Feature toggle support",
-      "Scalable architecture",
-    ],
-    description: "Customize features and scale as your business grows.",
   },
-};
+];
 
 // ssa
 const solutionsData = [
@@ -178,28 +153,22 @@ const AppDrawer = () => {
                 }`}
               />
             </CollapsibleTrigger>
-            <CollapsibleContent className="space-y-3 mt-2 ml-2">
-              {Object.values(featuresData).map((category, index) => (
-                <div key={index} className="border-l-2 border-gray-100 pl-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">{category.icon}</span>
-                    <h4 className={`font-semibold text-sm ${category.color}`}>
-                      {category.title}
-                    </h4>
-                  </div>
-                  <div className="space-y-1">
-                    {category.items.map((item, itemIndex) => (
-                      <a
-                        key={itemIndex}
-                        href="#"
-                        className="block text-xs text-gray-600 hover:text-orange-600 py-1 px-2 hover:bg-gray-50 rounded"
-                      >
-                        {item}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <CollapsibleContent className="space-y-1 mt-2 ml-2">
+              {featuresData.map((feature, index) => {
+                const IconComponent = feature.icon;
+                return (
+                  <a
+                    key={index}
+                    href="#"
+                    className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-md"
+                  >
+                    <IconComponent className={`h-4 w-4 ${feature.color}`} />
+                    <span className="font-medium text-sm text-gray-700">
+                      {feature.title}
+                    </span>
+                  </a>
+                );
+              })}
             </CollapsibleContent>
           </Collapsible>
 
@@ -287,7 +256,7 @@ const InventoryNavbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <AppDrawer />
-            <div className="flex items-center gap-2">
+            <Link href={"/"} className="flex items-center gap-2">
               <div className="w-16 h-14 relative">
                 <Image
                   src="/logo.png"
@@ -299,7 +268,7 @@ const InventoryNavbar = () => {
               <span className="text-2xl font-bold text-orange-500">
                 Inventory Eats
               </span>
-            </div>
+            </Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -309,78 +278,32 @@ const InventoryNavbar = () => {
                   <NavigationMenuTrigger className="px-0 text-sm font-medium text-gray-700 hover:text-orange-600">
                     <Link href="/features">Features</Link>
                   </NavigationMenuTrigger>
-                  {/* <NavigationMenuContent className="bg-white">
-                    <NavigationMenuLink className="block w-[900px] p-8">
-                      <div className="flex justify-between">
-                        <div className="grid grid-cols-3 gap-4 flex-1">
-                          {Object.values(featuresData).map(
-                            (category, index) => (
-                              <div key={index} className="space-y-3">
-                                <div className="flex items-center gap-3 p-2 cursor-pointer  pb-2">
-                                  <span className="text-xl self-start">
-                                    {category.icon}
-                                  </span>
-                                  <div>
-                                    <h3
-                                      className={`font-semibold text-sm ${category.color}`}
-                                    >
-                                      {category.title}
-                                    </h3>
-                                    <span className="text-xs">
-                                      {category.description}
-                                    </span>
-                                  </div>
-                                </div>
-                                {/* <div className="space-y-2">
-                                  {category.items.map((item, itemIndex) => (
-                                    <a
-                                      key={itemIndex}
-                                      href="#"
-                                      className="block text-xs text-gray-600 hover:text-orange-600 py-1 hover:bg-gray-50 rounded px-2 transition-colors"
-                                    >
-                                      {item}
-                                    </a>
-                                  ))}
-                                </div> */}
-                  {/* </div> */}
-                  {/* ) */}
-                  {/* )} */}
-                  {/* </div> */}
-                  {/* </div> */}
-                  {/* </NavigationMenuLink> */}
-                  {/* </NavigationMenuContent> */}
                   <NavigationMenuContent className="bg-white">
-                    <NavigationMenuLink className="block w-[900px] p-8">
-                      <div className="flex justify-between">
-                        <div className="grid grid-cols-3 gap-4 flex-1">
-                          {Object.values(featuresData).map(
-                            (category, index) => (
-                              <div
-                                key={index}
-                                onClick={() =>
-                                  handleFeatureClick(category.title)
-                                }
-                                className="space-y-3 p-3 rounded-lg hover:bg-orange-100 transition-all duration-200"
-                              >
-                                <div className="flex items-center gap-3 cursor-pointer">
-                                  <span className="text-xl self-start group-hover:scale-110 transition-transform">
-                                    {category.icon}
-                                  </span>
-                                  <div>
-                                    <h3
-                                      className={`font-semibold text-sm ${category.color} group-hover:text-orange-600 transition-colors`}
-                                    >
-                                      {category.title}
-                                    </h3>
-                                    <span className="text-xs text-gray-600 group-hover:text-gray-900 transition-colors">
-                                      {category.description}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            )
-                          )}
-                        </div>
+                    <NavigationMenuLink className="block w-[260px] p-4 ">
+                      <div className="space-y-1">
+                        {featuresData.map((feature, index) => {
+                          const IconComponent = feature.icon;
+                          return (
+                            // <a
+                            //   key={index}
+                            //   href="#"
+                            //   className="flex items-center gap-3 p-2 hover:underline rounded-md transition-colors"
+                            // >
+                            //   <span className="font-medium text-sm text-gray-700">
+                            //     {feature.title}
+                            //   </span>
+                            // </a>
+                            <div
+                              key={index}
+                              onClick={() => handleFeatureClick(feature.title)}
+                              className="flex cursor-pointer items-center gap-3 p-2 hover:underline rounded-md transition-colors"
+                            >
+                              <span className="font-medium text-sm text-gray-700">
+                                {feature.title}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </NavigationMenuLink>
                   </NavigationMenuContent>
@@ -415,14 +338,11 @@ const InventoryNavbar = () => {
               className="hidden md:flex items-center text-gray-500 hover:text-gray-700"
             ></a>
 
-            <a
-              href="/login"
-              className="hidden md:block text-sm font-medium text-orange-600"
-            >
+            <a href="/login" className="hidden md:block text-sm font-medium ">
               Login
             </a>
 
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white cursor-pointer  text-white px-4 py-2 text-sm font-medium">
+            <Button className="bg-orange-500 hover:bg-orange-600  cursor-pointer  text-white px-4 py-2 text-sm font-medium">
               Start Free Trail
             </Button>
           </div>
