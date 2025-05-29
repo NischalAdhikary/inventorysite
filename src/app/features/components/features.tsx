@@ -8,8 +8,6 @@ import {
   DollarSign,
   PieChart,
   Users,
-  Calendar,
-  ClipboardList,
   BarChart2,
   Receipt,
   Percent,
@@ -232,7 +230,6 @@ export default function Features() {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

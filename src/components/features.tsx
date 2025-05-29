@@ -1,22 +1,8 @@
 "use client";
 import React from "react";
 import {
-  Package,
-  BarChart3,
-  Scan,
-  Truck,
-  ShoppingCart,
-  FileText,
   Users,
   Settings,
-  Smartphone,
-  Cloud,
-  Shield,
-  Zap,
-  TrendingUp,
-  MapPin,
-  AlertTriangle,
-  CheckCircle,
   DollarSign,
   Upload,
   FilePlus,

@@ -1,6 +1,5 @@
 import React from "react";
-import InventoryNavbar from "./navbar";
-import { ChevronRight, MoveRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {

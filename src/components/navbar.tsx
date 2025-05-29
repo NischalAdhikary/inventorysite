@@ -5,7 +5,6 @@ import {
   ChevronDown,
   ChevronRight,
   Menu,
-  Download,
   DollarSign,
   Package,
   Users,
@@ -25,7 +24,6 @@ import {
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -36,7 +34,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
-import { desc, div } from "framer-motion/client";
+
 import { useRouter } from "next/navigation";
 
 const featuresData = [

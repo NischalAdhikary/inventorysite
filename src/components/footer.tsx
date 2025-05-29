@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Youtube, Linkedin, Mail, Phone } from "lucide-react";
+import { Facebook, Youtube, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -215,8 +215,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-      
 
           <div className="lg:col-span-1">
             <h3 className="text-lg font-semibold mb-6">Contact</h3>
