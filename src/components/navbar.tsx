@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, Download } from "lucide-react";
 import Image from "next/image";
 import {
@@ -25,6 +26,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
+import { desc } from "framer-motion/client";
 
 const featuresData = {
   incomeExpense: {
@@ -36,6 +38,7 @@ const featuresData = {
       "Categorize financial transactions",
       "View financial summaries",
     ],
+    description: "Easily track and categorize income and expenses.",
   },
   stockManagement: {
     title: "Stock Management",
@@ -46,6 +49,7 @@ const featuresData = {
       "Track stock availability",
       "Low stock alerts",
     ],
+    description: "Monitor stock levels and get low stock alerts.",
   },
   employeeRecords: {
     title: "Employee Management",
@@ -56,6 +60,7 @@ const featuresData = {
       "Assign roles and permissions",
       "Track attendance or tasks",
     ],
+    description: "Manage employees, roles, and track their tasks.",
   },
   orderCreation: {
     title: "Order Processing",
@@ -66,6 +71,7 @@ const featuresData = {
       "Track order status",
       "Generate invoices",
     ],
+    description: "Create and manage dine-in or delivery orders.",
   },
   billing: {
     title: "Billing & Invoicing",
@@ -76,6 +82,7 @@ const featuresData = {
       "Apply taxes and discounts",
       "Download or print invoices",
     ],
+    description: "Generate invoices with tax, discounts, and payments.",
   },
   customization: {
     title: "Custom Features",
@@ -86,6 +93,7 @@ const featuresData = {
       "Feature toggle support",
       "Scalable architecture",
     ],
+    description: "Customize features and scale as your business grows.",
   },
 };
 
@@ -258,6 +266,16 @@ const AppDrawer = () => {
 };
 
 const InventoryNavbar = () => {
+  const router = useRouter();
+  const handleFeatureClick = (label: string) => {
+    const slug = label
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    router.push(`/features/${slug}`);
+  };
+
   return (
     <div className="w-full">
       <div className="bg-gray-800 text-white text-center py-2 px-4 flex justify-center items-center gap-2">
@@ -291,24 +309,29 @@ const InventoryNavbar = () => {
                   <NavigationMenuTrigger className="px-0 text-sm font-medium text-gray-700 hover:text-orange-600">
                     <Link href="/features">Features</Link>
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-white">
-                    <NavigationMenuLink className="block w-[700px] p-8">
+                  {/* <NavigationMenuContent className="bg-white">
+                    <NavigationMenuLink className="block w-[900px] p-8">
                       <div className="flex justify-between">
-                        <div className="grid grid-cols-3 gap-8 flex-1">
+                        <div className="grid grid-cols-3 gap-4 flex-1">
                           {Object.values(featuresData).map(
                             (category, index) => (
                               <div key={index} className="space-y-3">
-                                <div className="flex items-center gap-2 border-b pb-2">
-                                  <span className="text-xl">
+                                <div className="flex items-center gap-3 p-2 cursor-pointer  pb-2">
+                                  <span className="text-xl self-start">
                                     {category.icon}
                                   </span>
-                                  <h3
-                                    className={`font-semibold text-sm ${category.color}`}
-                                  >
-                                    {category.title}
-                                  </h3>
+                                  <div>
+                                    <h3
+                                      className={`font-semibold text-sm ${category.color}`}
+                                    >
+                                      {category.title}
+                                    </h3>
+                                    <span className="text-xs">
+                                      {category.description}
+                                    </span>
+                                  </div>
                                 </div>
-                                <div className="space-y-2">
+                                {/* <div className="space-y-2">
                                   {category.items.map((item, itemIndex) => (
                                     <a
                                       key={itemIndex}
@@ -318,6 +341,41 @@ const InventoryNavbar = () => {
                                       {item}
                                     </a>
                                   ))}
+                                </div> */}
+                  {/* </div> */}
+                  {/* ) */}
+                  {/* )} */}
+                  {/* </div> */}
+                  {/* </div> */}
+                  {/* </NavigationMenuLink> */}
+                  {/* </NavigationMenuContent> */}
+                  <NavigationMenuContent className="bg-white">
+                    <NavigationMenuLink className="block w-[900px] p-8">
+                      <div className="flex justify-between">
+                        <div className="grid grid-cols-3 gap-4 flex-1">
+                          {Object.values(featuresData).map(
+                            (category, index) => (
+                              <div
+                                key={index}
+                                onClick={() =>
+                                  handleFeatureClick(category.title)
+                                }
+                                className="space-y-3 p-3 rounded-lg hover:bg-orange-100 transition-all duration-200"
+                              >
+                                <div className="flex items-center gap-3 cursor-pointer">
+                                  <span className="text-xl self-start group-hover:scale-110 transition-transform">
+                                    {category.icon}
+                                  </span>
+                                  <div>
+                                    <h3
+                                      className={`font-semibold text-sm ${category.color} group-hover:text-orange-600 transition-colors`}
+                                    >
+                                      {category.title}
+                                    </h3>
+                                    <span className="text-xs text-gray-600 group-hover:text-gray-900 transition-colors">
+                                      {category.description}
+                                    </span>
+                                  </div>
                                 </div>
                               </div>
                             )
@@ -346,7 +404,7 @@ const InventoryNavbar = () => {
               href="/pricing"
               className=" text-sm font-medium text-gray-700 hover:text-orange-600"
             >
-              Pricing
+              Contact Us
             </a>
           </div>
 

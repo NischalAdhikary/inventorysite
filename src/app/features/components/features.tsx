@@ -182,7 +182,7 @@ export default function Features() {
             <div
               key={index}
               onClick={() => handleFeatureClick(item.label)}
-              className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-orange-500/50 transition-all duration-300 hover:shadow-xl"
+              className="group cursor-pointer bg-white rounded-2xl p-8 border border-gray-200 hover:border-orange-500/50 transition-all duration-300 hover:shadow-xl"
             >
               <div className="mb-6">
                 <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300">
