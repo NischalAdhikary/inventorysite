@@ -4,6 +4,7 @@ import Features from "../components/features";
 import InventoryNavbar from "../components/navbar";
 import Footer from "../components/footer";
 import TestimonialsSection from "../components/testimonials";
+import According from "@/components/according";
 // dsadsa
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
       <Hero />
       <Features />
       <TestimonialsSection/>
+      <According className="bg-white"/>
       <Footer/>
     </div>
   );

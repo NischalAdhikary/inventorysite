@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronRight, Menu, Download } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, Download, DollarSign, Package, Users, FileText, Receipt, Settings } from "lucide-react";
 import Image from "next/image";
 import {
   NavigationMenu,
@@ -26,68 +26,38 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 
-const featuresData = {
-  incomeExpense: {
+const featuresData = [
+  {
     title: "Income & Expense Tracking",
-    icon: "💰",
+    icon: DollarSign,
     color: "text-green-600",
-    items: [
-      "Record income and expenses",
-      "Categorize financial transactions",
-      "View financial summaries",
-    ],
   },
-  stockManagement: {
+  {
     title: "Stock Management",
-    icon: "📦",
+    icon: Package,
     color: "text-blue-600",
-    items: [
-      "Add and update stock",
-      "Track stock availability",
-      "Low stock alerts",
-    ],
   },
-  employeeRecords: {
+  {
     title: "Employee Management",
-    icon: "👷",
+    icon: Users,
     color: "text-purple-600",
-    items: [
-      "Maintain employee records",
-      "Assign roles and permissions",
-      "Track attendance or tasks",
-    ],
   },
-  orderCreation: {
+  {
     title: "Order Processing",
-    icon: "📝",
+    icon: FileText,
     color: "text-orange-600",
-    items: [
-      "Create and manage orders",
-      "Track order status",
-      "Generate invoices",
-    ],
   },
-  billing: {
+  {
     title: "Billing & Invoicing",
-    icon: "🧾",
+    icon: Receipt,
     color: "text-red-600",
-    items: [
-      "Generate bills and receipts",
-      "Apply taxes and discounts",
-      "Download or print invoices",
-    ],
   },
-  customization: {
+  {
     title: "Custom Features",
-    icon: "⚙️",
+    icon: Settings,
     color: "text-gray-600",
-    items: [
-      "Adaptable to client needs",
-      "Feature toggle support",
-      "Scalable architecture",
-    ],
   },
-};
+];
 
 // ssa
 const solutionsData = [
@@ -170,28 +140,22 @@ const AppDrawer = () => {
                 }`}
               />
             </CollapsibleTrigger>
-            <CollapsibleContent className="space-y-3 mt-2 ml-2">
-              {Object.values(featuresData).map((category, index) => (
-                <div key={index} className="border-l-2 border-gray-100 pl-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">{category.icon}</span>
-                    <h4 className={`font-semibold text-sm ${category.color}`}>
-                      {category.title}
-                    </h4>
-                  </div>
-                  <div className="space-y-1">
-                    {category.items.map((item, itemIndex) => (
-                      <a
-                        key={itemIndex}
-                        href="#"
-                        className="block text-xs text-gray-600 hover:text-orange-600 py-1 px-2 hover:bg-gray-50 rounded"
-                      >
-                        {item}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <CollapsibleContent className="space-y-1 mt-2 ml-2">
+              {featuresData.map((feature, index) => {
+                const IconComponent = feature.icon;
+                return (
+                  <a
+                    key={index}
+                    href="#"
+                    className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-md"
+                  >
+                    <IconComponent className={`h-4 w-4 ${feature.color}`} />
+                    <span className="font-medium text-sm text-gray-700">
+                      {feature.title}
+                    </span>
+                  </a>
+                );
+              })}
             </CollapsibleContent>
           </Collapsible>
 
@@ -269,7 +233,7 @@ const InventoryNavbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <AppDrawer />
-            <div className="flex items-center gap-2">
+            <Link href={'/'} className="flex items-center gap-2">
               <div className="w-16 h-14 relative">
                 <Image
                   src="/logo.png"
@@ -281,7 +245,7 @@ const InventoryNavbar = () => {
               <span className="text-2xl font-bold text-orange-500">
                 Inventory Eats
               </span>
-            </div>
+            </Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -292,37 +256,23 @@ const InventoryNavbar = () => {
                     <Link href="/features">Features</Link>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white">
-                    <NavigationMenuLink className="block w-[700px] p-8">
-                      <div className="flex justify-between">
-                        <div className="grid grid-cols-3 gap-8 flex-1">
-                          {Object.values(featuresData).map(
-                            (category, index) => (
-                              <div key={index} className="space-y-3">
-                                <div className="flex items-center gap-2 border-b pb-2">
-                                  <span className="text-xl">
-                                    {category.icon}
-                                  </span>
-                                  <h3
-                                    className={`font-semibold text-sm ${category.color}`}
-                                  >
-                                    {category.title}
-                                  </h3>
-                                </div>
-                                <div className="space-y-2">
-                                  {category.items.map((item, itemIndex) => (
-                                    <a
-                                      key={itemIndex}
-                                      href="#"
-                                      className="block text-xs text-gray-600 hover:text-orange-600 py-1 hover:bg-gray-50 rounded px-2 transition-colors"
-                                    >
-                                      {item}
-                                    </a>
-                                  ))}
-                                </div>
-                              </div>
-                            )
-                          )}
-                        </div>
+                    <NavigationMenuLink className="block w-[260px] p-4 "> 
+                      <div className="space-y-1">
+                        {featuresData.map((feature, index) => {
+                          const IconComponent = feature.icon;
+                          return (
+                            <a
+                              key={index}
+                              href="#"
+                              className="flex items-center gap-3 p-2 hover:underline rounded-md transition-colors"
+                            >
+                              {/* <IconComponent className={`h-4 w-4 ${feature.color}`} /> */}
+                              <span className="font-medium text-sm text-gray-700">
+                                {feature.title}
+                              </span>
+                            </a>
+                          );
+                        })}
                       </div>
                     </NavigationMenuLink>
                   </NavigationMenuContent>
@@ -359,7 +309,7 @@ const InventoryNavbar = () => {
 
             <a
               href="/login"
-              className="hidden md:block text-sm font-medium text-orange-600"
+              className="hidden md:block text-sm font-medium "
             >
               Login
             </a>
