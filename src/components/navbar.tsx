@@ -308,25 +308,31 @@ const InventoryNavbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            <a
-              href="/entrprise"
+            <Link
+              href="/enterprise"
               className=" text-sm font-medium text-gray-700 hover:text-orange-600"
             >
-              Entrprise
-            </a>
-            <a
+              Enterprise
+            </Link>
+            <Link
               href="/customers"
               className=" text-sm font-medium text-gray-700 hover:text-orange-600"
             >
               Customers
-            </a>
+            </Link>
 
-            <a
+            {/* <a
               href="/pricing"
               className=" text-sm font-medium text-gray-700 hover:text-orange-600"
             >
               Contact Us
-            </a>
+            </a> */}
+            <Link
+              href="/contactus"
+              className=" text-sm font-medium text-gray-700 hover:text-orange-600"
+            >
+              Contact Us{" "}
+            </Link>
           </div>
 
           {/* Right Side Actions */}

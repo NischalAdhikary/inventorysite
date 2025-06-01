@@ -168,7 +168,6 @@ const TestimonialCard = () => {
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Card styles update */}
           <div className="overflow-hidden mx-12">
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -206,7 +205,6 @@ const TestimonialCard = () => {
                               {testimonial.company}
                             </p>
 
-                            {/* Metric Badge */}
                             <div className="flex items-center">
                               <div className="bg-orange-500/20 rounded-full p-2 mr-3">
                                 <IconComponent className="w-5 h-5 text-orange-400" />
@@ -236,7 +234,6 @@ const TestimonialCard = () => {
             </div>
           </div>
 
-          {/* Pagination Dots */}
           <div className="flex justify-center mt-8 space-x-2">
             {testimonials.map((_, index) => (
               <button
@@ -245,7 +242,7 @@ const TestimonialCard = () => {
                 disabled={isAnimating}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-orange-600 w-8"
+                    ? "bg-orange-600 "
                     : "bg-gray-300 hover:bg-gray-400"
                 } disabled:cursor-not-allowed`}
               />
