@@ -10,8 +10,11 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useParams } from "next/navigation";
 
 const TestimonialCard = () => {
+  const params = useParams();
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 

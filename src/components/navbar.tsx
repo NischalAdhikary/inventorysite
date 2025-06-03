@@ -315,7 +315,7 @@ const InventoryNavbar = () => {
               Enterprise
             </Link>
             <Link
-              href="/customers"
+              href="/customer"
               className=" text-sm font-medium text-gray-700 hover:text-orange-600"
             >
               Customers

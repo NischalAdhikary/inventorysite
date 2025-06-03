@@ -1,88 +1,88 @@
-// import React from "react";
-
-// import { ChevronRight } from "lucide-react";
-// import Image from "next/image";
-
-// export default function Hero() {
-//   return (
-//     <div className="w-full">
-//       <div className="bg-gray-50  flex flex-col justify-center items-center py-20">
-//         <div className="max-w-6xl mx-auto text-center mb-16">
-//           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-//             <span className="text-gray-800">Exploure Our</span>{" "}
-//             <span className="text-gray-800">Inventory</span>
-//             <br />
-//             <span className="text-orange-500">Management Features.</span>
-//           </h1>
-
-//           <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-//             Discover how Inventory Eats simplifies inventory with features
-//             designed for ease and organization.
-//           </p>
-
-//           <div className="flex justify-center items-center space-x-8">
-//             <button className="bg-orange-500 hover:bg-orange-600 text-white cursor-pointer px-8 py-3 rounded-lg text-md font-medium transition-colors duration-200">
-//               Start Free Trial
-//             </button>
-
-//             <button className="flex items-center space-x-2 text-orange-500 hover:text-orange-600 font-medium">
-//               <span>See All Plans</span>
-//               <ChevronRight className="w-4 h-4" />
-//             </button>
-//           </div>
-//         </div>
-//         {/* <div className=" lg:w-[1200px] mx-auto px-4">
-//           <div className="bg-white  border rounded-lg overflow-hidden shadow-lg">
-//             <Image
-//               src="/dashboard-v2.PNG"
-//               width={1200}
-//               height={1200}
-//               alt="Dashboard Interface"
-//               className="w-full h-full  object-contain"
-//               priority
-//             />
-//           </div>
-//         </div> */}
-//       </div>
-//     </div>
-//   );
-// }
 import React from "react";
-import { PhoneCall, Mail, Clock } from "lucide-react";
+import {
+  PhoneCall,
+  Mail,
+  Clock,
+  MapPin,
+  MessageCircle,
+  Globe,
+} from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
   return (
     <div className="w-full">
-      <div className="bg-gray-50 flex flex-col justify-center items-center py-20">
+      <div className="bg-gradient-to-b from-gray-50 to-white flex flex-col justify-center items-center py-20">
         <div className="max-w-6xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center bg-orange-100 rounded-full px-6 py-2 mb-8">
+            <MessageCircle className="w-5 h-5 text-orange-500 mr-2" />
+            <span className="text-orange-600 text-sm font-medium">
+              24/7 Customer Support
+            </span>
+          </div>
+
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-gray-800">Get in </span>
-            <span className="text-orange-500">Touch</span>
+            <span className="text-gray-900">We're Here to </span>
+            <span className="text-orange-500">Help You</span>
           </h1>
 
-          <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Have questions about our inventory management solution? Our team is
-            here to help. Reach out to us through any of the following channels.
+          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Get in touch with our expert team for personalized support with your
+            inventory management needs. We're committed to helping your business
+            succeed.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <PhoneCall className="w-8 h-8 text-orange-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-              <p className="text-gray-600">+1 (555) 123-4567</p>
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group cursor-pointer">
+              <PhoneCall className="w-10 h-10 text-orange-500 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold mb-3 text-gray-900">
+                Call Our Team
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Available for urgent support and inquiries
+              </p>
+              <p className="text-orange-500 font-semibold">
+                +977 (981) 123-4567
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <Mail className="w-8 h-8 text-orange-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-              <p className="text-gray-600">support@inventoryeats.com</p>
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group cursor-pointer">
+              <Mail className="w-10 h-10 text-blue-600 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold mb-3 text-gray-900">
+                Email Support
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Get detailed technical assistance
+              </p>
+              <p className="text-blue-600 font-semibold">
+                support@inventoryeats.com
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <Clock className="w-8 h-8 text-orange-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Business Hours</h3>
-              <p className="text-gray-600">Mon - Fri: 9AM - 6PM EST</p>
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group cursor-pointer">
+              <MapPin className="w-10 h-10 text-green-600 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold mb-3 text-gray-900">
+                Visit Our Office
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Drop by during business hours
+              </p>
+              <p className="text-green-600 font-semibold">
+                Biratnagar-5, Nepal
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-8 ">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-gray-600">
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5 text-orange-500" />
+                <span>Mon - Fri: 9AM - 6PM NPT</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe className="w-5 h-5 text-orange-500" />
+                <span>Supporting Customers Worldwide</span>
+              </div>
             </div>
           </div>
         </div>
